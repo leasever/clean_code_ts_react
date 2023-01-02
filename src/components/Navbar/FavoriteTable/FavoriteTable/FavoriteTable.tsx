@@ -5,13 +5,13 @@ import { Checkbox } from '@mui/material'
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-export interface PeopleTableInterface {}
+export interface FavoriteTableInterface {}
 
-const PeopleTable: React.FC<PeopleTableInterface> = () => {
+const FavoriteTable: React.FC<FavoriteTableInterface> = () => {
   const [selectedPeople, setSelectedPeople] = useState<Person[]>([])
   const pageSize = 5
   const dispatch = useDispatch()
-  const statePeople = useSelector((store: AppStore) => store.people)
+  const stateFavorites = useSelector((store: AppStore) => store.favorites)
 
   const findPerson = (person: Person) =>
     !!selectedPeople.find((p) => p.id === person.id)
@@ -31,7 +31,7 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
       type: 'actions',
       sortable: false,
       headerName: '',
-      width: 50,
+      Width: 50,
       renderCell: (params: GridRenderCellParams) => (
         <>
           {
@@ -55,7 +55,7 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
       field: 'category',
       headerName: 'Category',
       flex: 1,
-      minWidth: 100,
+      minWidth: 150,
       renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
     {
@@ -75,7 +75,7 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
   ]
   return (
     <DataGrid
-      rows={statePeople}
+      rows={stateFavorites}
       columns={colums}
       disableColumnSelector
       disableSelectionOnClick
@@ -87,4 +87,4 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
   )
 }
 
-export default PeopleTable
+export default FavoriteTable
