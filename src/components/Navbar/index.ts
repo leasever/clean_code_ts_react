@@ -1,2 +1,2 @@
-export * from './FavoriteTable/FavoriteTable';
+export * from './FavoriteTable';
 export { default as Navbar } from './Navbar';

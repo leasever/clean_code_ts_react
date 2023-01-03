@@ -3,7 +3,7 @@ import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import { CustomDialog } from '../CustomDialog'
 import { dialogOpenSubject$ } from '../CustomDialog/CustomDialog'
-import { FavoriteTable } from './FavoriteTable/FavoriteTable'
+import { FavoriteTable } from './FavoriteTable'
 
 export interface NavbarInterface {}
 
