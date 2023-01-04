@@ -27,7 +27,7 @@ const FavoriteTable: React.FC<FavoriteTableInterface> = () => {
         <>
           {
             <IconButton
-              color='secondary'
+              color='error'
               arial-label='favorites'
               component='label'
               onClick={() => handleClick(params.row)}
