@@ -1,7 +1,7 @@
 import { Character } from '@/models'
 import { addFavorite } from '@/redux/states'
 import { AppStore } from '@/redux/store'
-import { Avatar, Checkbox } from '@mui/material'
+import { Avatar, Checkbox, FormControlLabel } from '@mui/material'
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -28,29 +28,24 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
   }
   const colums = [
     {
-      field: 'actions',
-      type: 'actions',
-      sortable: false,
-      headerName: '',
-      width: 50,
-      renderCell: (params: GridRenderCellParams) => (
-        <>
-          {
-            <Checkbox
-              size='small'
-              checked={findPerson(params.row)}
-              onChange={() => handleChange(params.row)}
-            />
-          }
-        </>
-      ),
-    },
-    {
       field: 'name',
       headerName: 'Name',
       flex: 1,
       minWidth: 200,
-      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+      renderCell: (params: GridRenderCellParams) => (
+        <>
+          <FormControlLabel
+            control={
+              <Checkbox
+                size='small'
+                checked={findPerson(params.row)}
+                onChange={() => handleChange(params.row)}
+              />
+            }
+            label={params.value}
+          />
+        </>
+      ),
     },
     {
       field: 'species',
