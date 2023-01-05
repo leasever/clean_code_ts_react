@@ -1,9 +1,10 @@
 import { LocalStorageTypes } from '@/data'
-import { Person } from '@/models'
+import { Character } from '@/models'
 import { getLocalStorage, setLocalStorage } from '@/utilities'
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState: Person[] = []
+const initialState: Character[] = []
+
 export const peopleSlice = createSlice({
   name: 'people',
   initialState: getLocalStorage(LocalStorageTypes.PEOPLE)
@@ -20,4 +21,3 @@ export const peopleSlice = createSlice({
 export const { addPeople } = peopleSlice.actions
 
 export default peopleSlice.reducer
-

@@ -1,26 +1,25 @@
-import { Person } from '@/models'
+import { Character } from '@/models'
 import { addFavorite } from '@/redux/states'
 import { AppStore } from '@/redux/store'
-import { Checkbox } from '@mui/material'
+import { Avatar, Checkbox } from '@mui/material'
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 export interface PeopleTableInterface {}
 
 const PeopleTable: React.FC<PeopleTableInterface> = () => {
-  const [selectedPeople, setSelectedPeople] = useState<Person[]>([])
+  const [selectedPeople, setSelectedPeople] = useState<Character[]>([])
   const pageSize = 5
   const dispatch = useDispatch()
   const statePeople = useSelector((store: AppStore) => store.people)
   const favoritePeople = useSelector((store: AppStore) => store.favorites)
 
-
-  const findPerson = (person: Person) =>
+  const findPerson = (person: Character) =>
     !!favoritePeople.find((p) => p.id === person.id)
-  const filterPerson = (person: Person) =>
-  favoritePeople.filter((p) => p.id !== person.id)
+  const filterPerson = (person: Character) =>
+    favoritePeople.filter((p) => p.id !== person.id)
 
-  const handleChange = (person: Person) => {
+  const handleChange = (person: Character) => {
     const filteredPeople = findPerson(person)
       ? filterPerson(person)
       : [...selectedPeople, person]
@@ -50,35 +49,45 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
       field: 'name',
       headerName: 'Name',
       flex: 1,
-      minWidth: 150,
+      minWidth: 200,
       renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
     {
-      field: 'category',
-      headerName: 'Category',
+      field: 'species',
+      headerName: 'Specie',
+      flex: 1,
+      minWidth: 90,
+      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+    },
+    {
+      field: 'gender',
+      headerName: 'Gender',
+      flex: 1,
+      minWidth: 90,
+      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+    },
+    {
+      field: 'image',
+      headerName: 'Avatar',
       flex: 1,
       minWidth: 100,
-      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
-    },
-    {
-      field: 'company',
-      headerName: 'Company',
-      flex: 1,
-      minWidth: 150,
-      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
-    },
-    {
-      field: 'levelOfHappiness',
-      headerName: 'Level of happiness',
-      flex: 1,
-      minWidth: 150,
-      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+      renderCell: (params: GridRenderCellParams) => (
+        <>
+          {
+            <Avatar
+              alt='Avatar Rick and Morty'
+              src={params.value}
+              sx={{ width: 48, height: 48 }}
+            />
+          }
+        </>
+      ),
     },
   ]
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelectedPeople(favoritePeople)
-  },[favoritePeople])
+  }, [favoritePeople])
   return (
     <DataGrid
       rows={statePeople}

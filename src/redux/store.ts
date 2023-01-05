@@ -1,10 +1,10 @@
-import { Person } from '@/models'
+import { Character } from '@/models'
 import { configureStore } from '@reduxjs/toolkit'
 import { favoritesSlice, peopleSlice } from './states'
 
-export interface AppStore {
-  people: Person[]
-  favorites: Person[]
+export interface AppStore { 
+  people: Character[]
+  favorites: Character[]
 }
 
 export default configureStore<AppStore>({

@@ -2,7 +2,7 @@ import { Person } from '@/models'
 import { removeFavorite } from '@/redux/states'
 import { AppStore } from '@/redux/store'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { IconButton } from '@mui/material'
+import { Avatar, IconButton } from '@mui/material'
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -42,29 +42,39 @@ const FavoriteTable: React.FC<FavoriteTableInterface> = () => {
       field: 'name',
       headerName: 'Name',
       flex: 1,
-      minWidth: 150,
+      minWidth: 200,
       renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
     {
-      field: 'category',
-      headerName: 'Category',
+      field: 'species',
+      headerName: 'Specie',
       flex: 1,
-      minWidth: 150,
+      minWidth: 90,
       renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
     {
-      field: 'company',
-      headerName: 'Company',
+      field: 'gender',
+      headerName: 'Gender',
       flex: 1,
-      minWidth: 150,
+      minWidth: 90,
       renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
     {
-      field: 'levelOfHappiness',
-      headerName: 'Level of happiness',
+      field: 'image',
+      headerName: 'Avatar',
       flex: 1,
-      minWidth: 150,
-      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+      minWidth: 100,
+      renderCell: (params: GridRenderCellParams) => (
+        <>
+          {
+            <Avatar
+              alt='Avatar Rick and Morty'
+              src={params.value}
+              sx={{ width: 48, height: 48 }}
+            />
+          }
+        </>
+      ),
     },
   ]
   return (
