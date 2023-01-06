@@ -72,13 +72,12 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
       renderCell: (params: GridRenderCellParams) => (
         <>
           {loaded ? (
-            <Avatar alt='Avatar Rick and Morty' src={params.value} />
+            <Avatar>
+              <Avatar alt='Avatar Rick and Morty' src={params.value} />
+            </Avatar>
           ) : (
             <Skeleton variant='circular'>
-              <Avatar
-                src={params.value}
-                onLoad={() => setLoaded(true)}
-              />
+              <Avatar src={params.value} onLoad={() => setLoaded(true)} />
             </Skeleton>
           )}
         </>
