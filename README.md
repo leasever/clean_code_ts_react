@@ -21,7 +21,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -30,7 +29,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://leasever.github.io/clean_code_ts_react/)
 
 Application in React, consumes the Rick and Morty api, good practices, clean architecture, redux, context and Typescript.
 
@@ -76,7 +75,7 @@ This is an example of how to list things you need to use the software and how to
 
 Abraham Leandro - [Linkedin](https://www.linkedin.com/in/abraham-leandro-vega-4644b01bb/) - leandrovegaabraham@gmail.com
 
-Project Link: [https://github.com/leasever/clean_code_ts_react](https://github.com/leasever/clean_code_ts_react)
+Project Link: [https://leasever.github.io/clean_code_ts_react/](https://leasever.github.io/clean_code_ts_react/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
