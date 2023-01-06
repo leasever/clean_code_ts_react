@@ -1,7 +1,7 @@
 import { Character } from '@/models'
 import { addFavorite } from '@/redux/states'
 import { AppStore } from '@/redux/store'
-import { Avatar, Checkbox, FormControlLabel } from '@mui/material'
+import { Avatar, Checkbox, FormControlLabel, Skeleton } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'
 import React, { useEffect, useState } from 'react'
@@ -10,6 +10,8 @@ export interface PeopleTableInterface {}
 
 const PeopleTable: React.FC<PeopleTableInterface> = () => {
   const [selectedPeople, setSelectedPeople] = useState<Character[]>([])
+  const [loaded, setLoaded] = useState(false)
+  console.log('loaded ', loaded)
   const pageSize = 5
   const dispatch = useDispatch()
   const statePeople = useSelector((store: AppStore) => store.people)
@@ -69,14 +71,16 @@ const PeopleTable: React.FC<PeopleTableInterface> = () => {
       minWidth: 100,
       renderCell: (params: GridRenderCellParams) => (
         <>
-          {
-            <Avatar >
+          {loaded ? (
+            <Avatar alt='Avatar Rick and Morty' src={params.value} />
+          ) : (
+            <Skeleton variant='circular'>
               <Avatar
-                alt='Avatar Rick and Morty'
                 src={params.value}
+                onLoad={() => setLoaded(true)}
               />
-            </Avatar>
-          }
+            </Skeleton>
+          )}
         </>
       ),
     },
